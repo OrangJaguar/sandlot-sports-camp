@@ -156,3 +156,17 @@ button:focus-visible {
     @apply bg-background text-foreground;
   }
 }
+
+/* Scale the whole design up on large displays so wide monitors keep the same
+   density the site has in a smaller window (matches how it looks at 125% zoom) */
+@media (min-width: 1280px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1600px) {
+  html {
+    font-size: 18px;
+  }
+}
