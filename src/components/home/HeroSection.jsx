@@ -2,7 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '../../utils';
-import { ChevronRight, Play, Star } from 'lucide-react';
+import { Star } from 'lucide-react';
+import RegisterButton from '@/components/RegisterButton';
+import { REGISTRATION_OPENS } from '@/lib/campInfo';
 
 export default function HeroSection() {
   return (
@@ -56,13 +58,7 @@ export default function HeroSection() {
               transition={{ delay: 0.5 }}
               className="flex flex-wrap gap-4"
             >
-              <Link
-                to={createPageUrl('Registration')}
-                className="group px-8 py-4 bg-[#1a3a4a] text-white font-bold rounded-full hover-lift badge-shadow flex items-center gap-2 text-lg"
-              >
-                2027 Registration Opens January
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+              <RegisterButton size="lg" />
               <Link
                 to={createPageUrl('TheExperience')}
                 className="px-8 py-4 bg-transparent border-2 border-[#3D2B1F] text-[#3D2B1F] font-bold rounded-full hover:bg-[#3D2B1F] hover:text-white transition-all flex items-center gap-2 text-lg"
@@ -70,6 +66,15 @@ export default function HeroSection() {
                 The Experience
               </Link>
             </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="mt-4 text-sm font-semibold text-[#8B7355] tracking-wide"
+            >
+              Summer 2027 sign-ups open {REGISTRATION_OPENS}
+            </motion.p>
 
             {/* Trust Badges */}
             <motion.div

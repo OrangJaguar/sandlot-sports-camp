@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import ActivitiesGrid from '../components/experience/ActivitiesGrid';
 import FieldTrips from '../components/experience/FieldTrips';
 import SwimmingSection from '../components/experience/SwimmingSection';
-import ScubaSection from '../components/experience/ScubaSection';
 import WeeklyItinerary from '../components/experience/WeeklyItinerary';
 
 export default function TheExperience() {
@@ -38,7 +37,6 @@ export default function TheExperience() {
       <ActivitiesGrid />
       <FieldTrips />
       <SwimmingSection />
-      <ScubaSection />
     </div>
   );
 }

@@ -47,10 +47,10 @@ export default function ScubaSection() {
                 alt="Scuba diving"
                 className="rounded-2xl w-full h-[500px] object-cover"
               />
-              
+
               {/* Floating Badge */}
               <motion.div
-                animate={{ 
+                animate={{
                   y: [0, -15, 0],
                   rotate: [0, 5, 0]
                 }}
@@ -73,13 +73,13 @@ export default function ScubaSection() {
               <Anchor className="w-4 h-4" />
               Special Add-On
             </div>
-            
+
             <h2 className="font-display text-4xl md:text-5xl text-white mb-6">
               Sandlot Scuba
             </h2>
             <p className="text-white/80 text-lg mb-8 leading-relaxed">
-              Want to learn how to scuba dive? Sandlot Scuba is a fun, innovative program that 
-              shows campers the joys of scuba diving! This introductory course is perfect for 
+              Want to learn how to scuba dive? Sandlot Scuba is a fun, innovative program that
+              shows campers the joys of scuba diving! This introductory course is perfect for
               first-time divers.
             </p>
 

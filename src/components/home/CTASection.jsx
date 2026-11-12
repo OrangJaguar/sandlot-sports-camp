@@ -1,21 +1,12 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { createPageUrl } from '../../utils';
-import { Calendar, Clock, ChevronRight, Users } from 'lucide-react';
+import { Calendar, Clock, Users } from 'lucide-react';
+import RegisterButton from '@/components/RegisterButton';
+import { CAMP_LOCATION, CAMP_WEEKS, REGISTRATION_OPENS, TUITION } from '@/lib/campInfo';
 
 export default function CTASection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const weeks = [
-    { week: 1 },
-    { week: 2 },
-    { week: 3 },
-    { week: 4 },
-    { week: 5 },
-    { week: 6 },
-  ];
 
   return (
     <section ref={ref} className="py-24 bg-[#1a3a4a] relative overflow-hidden">
@@ -46,7 +37,7 @@ export default function CTASection() {
               <span className="block text-[#F5E6C8]">in 2027!</span>
             </h2>
             <p className="text-white/80 text-xl mb-8">
-              Registration for Summer 2027 opens in January. Thanks for a great 2026 season!
+              Registration for Summer 2027 opens {REGISTRATION_OPENS}. Thanks for a great 2026 season!
             </p>
 
             <div className="space-y-4 mb-10">
@@ -70,13 +61,7 @@ export default function CTASection() {
               </div>
             </div>
 
-            <Link
-              to={createPageUrl('Registration')}
-              className="inline-flex items-center gap-3 px-10 py-5 bg-white text-[#1a3a4a] font-bold text-xl rounded-full hover-lift badge-shadow group"
-            >
-              2027 Registration Opens January
-              <ChevronRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
-            </Link>
+            <RegisterButton variant="white" size="lg" />
           </motion.div>
 
           {/* Weeks Grid */}
@@ -90,24 +75,25 @@ export default function CTASection() {
                 <Calendar className="w-7 h-7" />
                 2027 Camp Weeks
               </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {weeks.map((item, i) => (
+              <div className="grid grid-cols-2 gap-3">
+                {CAMP_WEEKS.map((item, i) => (
                   <motion.div
-                    key={i}
+                    key={item.week}
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.3 + i * 0.1 }}
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-white rounded-xl p-4 cursor-pointer hover:shadow-lg transition-all"
+                    whileHover={{ scale: 1.03 }}
+                    className="bg-white rounded-xl px-4 py-3 hover:shadow-lg transition-all"
                   >
-                    <div className="text-[#1a3a4a] font-bold text-sm">Week {item.week}</div>
-                    <div className="text-[#3D2B1F] font-semibold">Summer 2027</div>
+                    <div className="text-[#2D5A3D] font-bold text-xs uppercase tracking-widest">{item.week}</div>
+                    <div className="text-[#3D2B1F] font-semibold">{item.dates}</div>
                   </motion.div>
                 ))}
               </div>
-              <p className="text-white/70 text-xs mt-6 text-center">
-                📍 Location TBD for 2027
-              </p>
+              <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-white/70 text-xs">
+                <span className="font-semibold text-[#F5E6C8]">{TUITION} per week</span>
+                <span className="text-center">📍 {CAMP_LOCATION.name}, Dublin</span>
+              </div>
             </div>
           </motion.div>
         </div>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from './utils';
-import { Menu, X, ChevronRight, Mail, Facebook } from 'lucide-react';
+import { Menu, X, Mail, Facebook } from 'lucide-react';
+import RegisterButton from '@/components/RegisterButton';
+import { CAMP_LOCATION } from '@/lib/campInfo';
 import { motion, AnimatePresence } from 'framer-motion';
 
 
@@ -47,6 +49,7 @@ export default function Layout({ children, currentPageName }) {
   { name: 'Home', page: 'Home' },
   { name: 'The Experience', page: 'TheExperience' },
   { name: 'The Details', page: 'TheDetails' },
+  { name: 'Registration', page: 'Registration' },
   { name: 'The Team', page: 'TheTeam' }];
 
 
@@ -141,13 +144,7 @@ export default function Layout({ children, currentPageName }) {
                   {link.name}
                 </Link>
               )}
-              <Link
-                to={createPageUrl('Registration')}
-                className="ml-4 px-6 py-2.5 bg-[#2D5A3D] text-white font-bold rounded-full hover-lift badge-shadow flex items-center gap-2 text-sm"
-              >
-                2027 Registration Opens January
-                <ChevronRight className="w-4 h-4" />
-              </Link>
+              <RegisterButton size="sm" className="ml-4" />
             </div>
 
             {/* Mobile Menu Button */}
@@ -179,13 +176,7 @@ export default function Layout({ children, currentPageName }) {
                     {link.name}
                   </Link>
               )}
-                <Link
-                  to={createPageUrl('Registration')}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 bg-[#2D5A3D] text-white font-bold rounded-xl text-center text-lg mt-4"
-                >
-                  2027 Registration Opens January
-                </Link>
+                <RegisterButton size="md" className="mt-4 w-full" />
               </div>
             </div>
           }
@@ -244,8 +235,11 @@ export default function Layout({ children, currentPageName }) {
             <div>
               <h4 className="font-display text-lg mb-4">Location</h4>
               <p className="text-[#8B7355]">
-                Camp location for 2027 is currently <span className="text-[#F5E6C8] font-semibold">TBD</span>.
-                Check back in January for details!
+                <span className="text-[#F5E6C8] font-semibold">{CAMP_LOCATION.name}</span>
+                <br />
+                {CAMP_LOCATION.street}
+                <br />
+                {CAMP_LOCATION.city}
               </p>
             </div>
           </div>

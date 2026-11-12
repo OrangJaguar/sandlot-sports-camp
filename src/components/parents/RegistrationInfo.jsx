@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { createPageUrl } from '../../utils';
-import { Calendar, Users, Edit3, ChevronRight, Clock } from 'lucide-react';
+import { Calendar, Users, Edit3, Clock } from 'lucide-react';
+import RegisterButton from '@/components/RegisterButton';
+import { REGISTRATION_OPENS, TUITION } from '@/lib/campInfo';
 
 export default function RegistrationInfo() {
   const ref = useRef(null);
@@ -44,7 +44,7 @@ export default function RegistrationInfo() {
           { icon: Users, label: "Ages", value: "7-13", sub: "Grades 2-8" },
           { icon: Calendar, label: "Summer", value: "6 weeks", sub: "available" },
           { icon: Clock, label: "Hours", value: "9–4", sub: "Mon–Fri daily" },
-          { icon: Edit3, label: "Payment", value: "100%", sub: "Due at registration" }].
+          { icon: Edit3, label: "Tuition", value: TUITION, sub: "per camper / week" }].
           map((item, index) =>
           <motion.div
             key={index}
@@ -81,14 +81,9 @@ export default function RegistrationInfo() {
             )}
           </div>
           
-          <div className="mt-8 text-center">
-            <Link
-              to={createPageUrl('Registration')}
-              className="inline-flex items-center gap-3 px-10 py-4 bg-[#1a3a4a] text-white font-bold text-lg rounded-full hover-lift badge-shadow group">
-
-              2027 Registration Opens January
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-            </Link>
+          <div className="mt-8 flex flex-col items-center gap-3">
+            <RegisterButton size="lg" />
+            <span className="text-[#8B7355] text-sm">Registration opens {REGISTRATION_OPENS}</span>
           </div>
         </motion.div>
 

@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { MapPin, Clock, Car } from 'lucide-react';
+import { CAMP_LOCATION, CAMP_MAP_URL } from '@/lib/campInfo';
 
 export default function LocationMap() {
   const ref = useRef(null);
@@ -28,11 +29,20 @@ export default function LocationMap() {
             <div className="w-16 h-16 bg-[#B5473B] rounded-2xl flex items-center justify-center mx-auto mb-6">
               <MapPin className="w-8 h-8 text-white" />
             </div>
-            <h3 className="font-display text-3xl text-[#3D2B1F] mb-4">Location TBD</h3>
-            <p className="text-[#8B7355] text-lg mb-8">
-              Our camp location for Summer 2027 is still being finalized. 
-              Check back in January when registration opens for full details!
+            <h3 className="font-display text-3xl text-[#3D2B1F] mb-2">{CAMP_LOCATION.name}</h3>
+            <p className="text-[#8B7355] text-lg mb-6">
+              <span className="font-semibold text-[#3D2B1F]">{CAMP_LOCATION.street}</span>
+              <br />
+              {CAMP_LOCATION.city}
             </p>
+            <a
+              href={CAMP_MAP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 mb-8 rounded-full bg-[#1a3a4a] text-white font-semibold hover:bg-[#2D5A3D] transition-colors">
+              <MapPin className="w-4 h-4" />
+              Open in Google Maps
+            </a>
 
             <div className="grid md:grid-cols-2 gap-6 text-left">
               <div className="bg-[#FAF8F5] rounded-2xl p-6">

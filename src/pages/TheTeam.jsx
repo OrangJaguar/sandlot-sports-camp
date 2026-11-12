@@ -3,8 +3,7 @@ import { motion } from 'framer-motion';
 import MissionSection from '../components/about/MissionSection';
 import StaffSection from '../components/about/StaffSection';
 import StaffProfiles from '../components/about/StaffProfiles';
-import { Link } from 'react-router-dom';
-import { createPageUrl } from '../utils';
+import RegisterButton from '../components/RegisterButton';
 
 export default function TheTeam() {
   return (
@@ -42,12 +41,7 @@ export default function TheTeam() {
             <p className="text-white/80 text-xl mb-10">
               Give your child an unforgettable summer of growth, friendship, and fun.
             </p>
-            <Link
-              to={createPageUrl('Registration')}
-              className="inline-flex items-center gap-3 px-12 py-5 bg-white text-[#1a3a4a] font-bold text-xl rounded-full hover:shadow-xl transition-shadow"
-            >
-              2027 Registration Opens January
-            </Link>
+            <RegisterButton variant="white" size="lg" />
           </motion.div>
         </div>
       </section>
