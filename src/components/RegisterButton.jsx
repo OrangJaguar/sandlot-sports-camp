@@ -15,7 +15,7 @@ const sizes = {
   lg: 'px-9 py-4 text-lg',
 };
 
-export default function RegisterButton({ variant = 'forest', size = 'md', label = 'Register Now', className }) {
+export default function RegisterButton({ variant = 'forest', size = 'md', label = 'Register', className }) {
   return (
     <a
       href={REGISTRATION_URL}
